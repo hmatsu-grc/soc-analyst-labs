@@ -42,20 +42,17 @@ SOC170 — Passwd Found in Requested URL — Possible LFI Attack
 
 Important fields to record, especially the source IP, the requested URL, and the alert trigger reason:
 
-- Source IP: `106.55.45.162`
-- destination_address: `172.16.17.13`
-- Requested URL: `/?file=../../../../etc/passwd`
-- Requested method: `GET`
-- Device action: `Permitted`
-- Response size: `0`
-- Response status: `500`
+- Source IP Address: `106.55.45.162`
+- Requested URL: `https://172.16.17.13/?file=../../../../etc/passwd`
+- Alert Trigger Reason: URL Contains `passwd`
   
 ![Alert Overview](images/01-alert-overview.png)
 
 ## Step 2 - Search the Logs
 1. Open **Log Management**
-2. Select the source_address field
-3. Filter the logs using **Source IP: 106.55.45.162**
+2. Select the **source_address** field
+3. Filter the logs entring source IP address **(106.55.45.162)** under **Value** 
+
 The search returned one event associated with the source IP.
 
 ![SourceIP](images/02-SourceIP-overview.png)
@@ -63,13 +60,13 @@ The search returned one event associated with the source IP.
 ## Step 3 - Analyze the Request and Response
 Expand the matching log event and review the raw request details.
 
-The requested URL was:
+The requested URL:
 
 ```text
 https://172.16.17.13/?file=../../../../etc/passwd
 ```
 
-The server response was:
+The server response:
 
 ```text
 HTTP Response Status: 500
@@ -144,11 +141,11 @@ The server returned HTTP status 500 with a response size of 0 bytes. No contents
 
 No evidence of successful file disclosure, persistence, or broader compromise was identified within the scope of the investigation.
 
-### 8. Analyst Note
+### Analyst Note
 
 This alert was a true positive. The external source IP 106.55.45.162 attempted a Local File Inclusion (LFI) attack using directory traversal to access /etc/passwd. Log analysis showed an HTTP 500 internal server error with a response size of 0 bytes. Based on the available evidence, the requested file was not returned and the attack was unsuccessful.
 
-### 9. Close Alert
+### Close Alert
 
 **Event ID:** `120`
 
