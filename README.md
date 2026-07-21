@@ -1,22 +1,48 @@
 # SOC Analyst Labs
 
-This repository contains hands-on cybersecurity labs, investigation exercises, and defensive security workflows focused on SOC operations, threat detection, phishing analysis, SIEM investigations, and threat hunting.
+This repository contains hands-on cybersecurity investigations and defensive security exercises focused on SOC operations, alert triage, log analysis, and incident response.
 
-Topics Covered:
-- Phishing analysis
-- Malware analysis
-- Alert triage
-- Windows Event Log investigations
-- PCAP/network traffic analysis
-- Threat hunting
-- MITRE ATT&CK mapping
+## Featured Investigation
 
-Tools & Platforms:
-- Splunk
-- Wazuh
-- IBM QRadar
-- Wireshark
-- TheHive
-- Sysmon
+### LetsDefend SOC170 — Possible Local File Inclusion Attack
 
-These labs are based on structured cybersecurity training, simulated SOC investigations, and independent hands-on learning projects.
+A step-by-step investigation of a suspicious web request attempting to access `/etc/passwd` through directory traversal.
+
+The walkthrough covers:
+
+- Alert validation
+- Source IP log filtering
+- HTTP request and response analysis
+- Local File Inclusion identification
+- Artifact collection
+- Playbook decisions
+- Alert closure and escalation reasoning
+
+[View the SOC170 walkthrough](alert-triage/letsdefend-soc170-lfi/)
+
+## Skills Demonstrated
+
+- SOC alert triage
+- Web attack analysis
+- Log investigation
+- Indicator and artifact collection
+- True-positive classification
+- Incident escalation decisions
+- Technical documentation
+
+## Tools and Platforms
+
+- LetsDefend
+- Web server logs
+- Threat intelligence resources
+- GitHub Markdown
+
+## Repository Structure
+
+```text
+soc-analyst-labs/
+└── alert-triage/
+    ├── README.md
+    └── letsdefend-soc170-lfi/
+        ├── README.md
+        └── images/
